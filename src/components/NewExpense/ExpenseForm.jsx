@@ -7,7 +7,7 @@ const ExpenseForm = ({ onAddExpense }) => {
 
   const [userInput, setUserInput] = useState({
     title: "",
-    amount: 0,
+    amount: 0.0,
     date: "",
   });
 
@@ -31,6 +31,7 @@ const ExpenseForm = ({ onAddExpense }) => {
       ...userInput,
       date: e.target.value,
     });
+
     //setDate(e.target.value);
   };
 
@@ -48,7 +49,7 @@ const ExpenseForm = ({ onAddExpense }) => {
 
     setUserInput({
       title: "",
-      amount: 0,
+      amount: 0.0,
       date: "",
     });
   };

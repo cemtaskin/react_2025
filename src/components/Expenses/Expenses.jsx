@@ -1,36 +1,25 @@
-
-
 import Card from "../UI/Card";
 import ExpenseItem from "./ExpenseItem";
-import "./Expenses.css"; 
-function Expenses ({expenses}){
-    return(
-        <Card className='expenses'>
+import "./Expenses.css";
+function Expenses({ expenses }) {
+  return (
+    <div>
+      {expenses.length == 0 && <div>No items</div>}
+
+      {expenses.length > 0 && (
+        <Card className="expenses">
+          {expenses.map((expense) => (
             <ExpenseItem
-        title={expenses[0].title}
-        date={expenses[0].date}
-        amount={expenses[0].amount}
-      ></ExpenseItem>
-
-      <ExpenseItem
-        title={expenses[1].title}
-        date={expenses[1].date}
-        amount={expenses[1].amount}
-      ></ExpenseItem>
-
-      <ExpenseItem
-        title={expenses[2].title}
-        date={expenses[2].date}
-        amount={expenses[2].amount}
-      ></ExpenseItem>
-
-      <ExpenseItem
-        title={expenses[3].title}
-        date={expenses[3].date}
-        amount={expenses[3].amount}
-      ></ExpenseItem>
+              key={Math.random()}
+              title={expense.title}
+              date={expense.date}
+              amount={expense.amount}
+            ></ExpenseItem>
+          ))}
         </Card>
-    );
+      )}
+    </div>
+  );
 }
 
 export default Expenses;

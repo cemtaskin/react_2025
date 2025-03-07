@@ -15,7 +15,7 @@ const App = () => {
 
   const addExpense = (expense) => {
     setExpenses((prevState) => {
-      console.log([...prevState, expense]);
+      console.log([...prevState, { ...expense, date: new Date(expense.date) }]);
       return [...prevState, expense];
     });
   };
@@ -23,6 +23,7 @@ const App = () => {
   return (
     <div>
       <NewExpense onAddExpense={addExpense}></NewExpense>
+      <Expenses expenses={expenses}></Expenses>
     </div>
   );
 };
@@ -30,5 +31,5 @@ const App = () => {
 export default App;
 
 /*
-<Expenses expenses={expenses}></Expenses>
+
 */
