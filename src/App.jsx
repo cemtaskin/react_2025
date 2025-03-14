@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./App.css";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
+import ExpenseFilter from "./components/ExpenseFilter/ExpenseFilter";
 
 const App = () => {
   /*
@@ -20,9 +21,17 @@ const App = () => {
     });
   };
 
+  const dropDownChangeHandler = (e) => {
+    console.log(e.target.value);
+  };
+
   return (
     <div>
       <NewExpense onAddExpense={addExpense}></NewExpense>
+      <ExpenseFilter
+        onChangeFilter={dropDownChangeHandler}
+        selected={2022}
+      ></ExpenseFilter>
       <Expenses expenses={expenses}></Expenses>
     </div>
   );
