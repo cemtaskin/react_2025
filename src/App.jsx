@@ -3,6 +3,7 @@ import "./App.css";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 import ExpenseFilter from "./components/ExpenseFilter/ExpenseFilter";
+import ExpenseChart from "./components/Expenses/ExpenseChart";
 
 const App = () => {
   /*
@@ -36,6 +37,7 @@ const App = () => {
         onChangeFilter={dropDownChangeHandler}
         selected={year}
       ></ExpenseFilter>
+      <ExpenseChart expenses={filteredExpenses()}></ExpenseChart>
       <Expenses expenses={filteredExpenses()}></Expenses>
     </div>
   );
