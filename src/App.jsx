@@ -13,26 +13,30 @@ const App = () => {
     { title: "A Desk (Wooden)", amount: 140.2, date: new Date(2021, 1, 16) },
   ];*/
   const [expenses, setExpenses] = useState([]);
+  const [year, setYear] = useState(2022);
 
   const addExpense = (expense) => {
     setExpenses((prevState) => {
-      console.log([...prevState, { ...expense, date: new Date(expense.date) }]);
       return [...prevState, expense];
     });
   };
 
+  const filteredExpenses = () => {
+    return expenses.filter((e) => new Date(e.date).getFullYear() == year);
+  };
+
   const dropDownChangeHandler = (e) => {
-    console.log(e.target.value);
+    setYear(e.target.value);
   };
 
   return (
-    <div>
+    <div className="body">
       <NewExpense onAddExpense={addExpense}></NewExpense>
       <ExpenseFilter
         onChangeFilter={dropDownChangeHandler}
-        selected={2022}
+        selected={year}
       ></ExpenseFilter>
-      <Expenses expenses={expenses}></Expenses>
+      <Expenses expenses={filteredExpenses()}></Expenses>
     </div>
   );
 };
